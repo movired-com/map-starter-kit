@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .env.secret
 dist.zip
+
+# Los .wam los gestiona el map-storage de WA (y el script sync-personal-areas).
+# No deben vivir en el repo ni subirse desde local, para no pisar el remoto.
+*.wam
+*.wam.check

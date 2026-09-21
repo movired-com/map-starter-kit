@@ -6,10 +6,11 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --config web.vite.config.ts",
-    "buildmap": "tsc && vite build --config buildmap.vite.config.ts",
+    "buildmap": "tsc && vite build --config buildmap.vite.config.ts && node scripts/fix-map-script-path.mjs",
     "preview": "vite preview --config buildmap.vite.config.ts --outDir dist",
-    "upload": "npm run buildmap && upload-wa-map",
-    "upload-only": "upload-wa-map"
+    "upload": "npm run buildmap && upload-wa-map && npm run sync-personal-areas",
+    "upload-only": "upload-wa-map && npm run sync-personal-areas",
+    "sync-personal-areas": "node -r dotenv/config scripts/sync-personal-areas.mjs dotenv_config_path=.env.secret"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

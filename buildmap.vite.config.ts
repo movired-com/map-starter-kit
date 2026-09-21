@@ -6,6 +6,11 @@ const maps = getMaps();
 
 let optimizerOptions: OptimizeOptions = {
     logs: process.env.LOG_LEVEL && process.env.LOG_LEVEL in LogLevel ? LogLevel[process.env.LOG_LEVEL] : LogLevel.NORMAL,
+    // Este mapa usa tiles de 48x48. El optimizador asume 32x32 por defecto,
+    // lo que provoca el error "Tileset ... not compatible! Accept only 32 tile size".
+    tile: {
+        size: 48,
+    },
 };
 
 if (process.env.TILESET_OPTIMIZATION && process.env.TILESET_OPTIMIZATION === "true") {
